@@ -15,7 +15,7 @@ import (
 // ErrName is the analyzer itself.
 var ErrName = &analysis.Analyzer{
 	Name:     "errname",
-	Doc:      "Checks that sentinel errors have prefix Err and error types have suffix Error.",
+	Doc:      "Checks that sentinel errors are prefixed with the `Err` and error types are suffixed with the `Error`.",
 	Run:      run,
 	Requires: []*analysis.Analyzer{inspect.Analyzer},
 }

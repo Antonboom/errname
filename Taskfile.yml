@@ -1,0 +1,39 @@
+# https://taskfile.dev/#/installation
+version: '3'
+
+silent: true
+
+tasks:
+  default:
+    cmds:
+      - task: tools:install
+      - task: tidy
+      - task: fmt
+      - task: lint
+      - task: install
+
+  tools:install:
+    - echo "Install local tools..."
+    - (which gci > /dev/null) || GO111MODULE=off go get -u github.com/daixiang0/gci
+    - (which gofumpt > /dev/null) || GO111MODULE=off go get -u mvdan.cc/gofumpt
+
+  tidy:
+    cmds:
+      - echo "Tidy..."
+      - go mod tidy
+
+  fmt:
+    cmds:
+      - echo "Fmt..."
+      - gofumpt -w .
+      - gci -local github.com/Antonboom/errname -w . > /dev/null
+
+  lint:
+    cmds:
+      - echo "Lint..."
+      - golangci-lint run --fix ./...
+
+  install:
+    cmds:
+      - echo "Install..."
+      - go install ./...

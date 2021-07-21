@@ -1,4 +1,4 @@
-name: errname linter basic checks.
+name: CI
 
 on:
   push:

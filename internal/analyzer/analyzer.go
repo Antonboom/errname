@@ -12,6 +12,7 @@ import (
 	"golang.org/x/tools/go/ast/inspector"
 )
 
+// ErrName is the analyzer itself.
 var ErrName = &analysis.Analyzer{
 	Name:     "errname",
 	Doc:      "Checks that sentinel errors have prefix Err and error types have suffix Error.",

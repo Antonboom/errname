@@ -102,8 +102,8 @@ func NewDecodeError() error {
 
 - Package aliases are not supported if the source package and its directory differ in name.
 
-- Not supported sentinel errors that were not created by a `errors`/`fmt` package and that do not have an explicit
-  type `error`:
+- Not supported sentinel errors that were created by an external type or func (except `errors`/`fmt`) and that do not 
+  have an explicit type `error`:
 
 ```go
 var ErrUnsupported = new(net.AddrError)

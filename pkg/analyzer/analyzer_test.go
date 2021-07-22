@@ -12,7 +12,7 @@ func TestErrName(t *testing.T) {
 		"unusual/errortype",
 		"unusual/newfunc",
 	}
-	analysistest.Run(t, analysistest.TestData(), ErrName, pkgs...)
+	analysistest.Run(t, analysistest.TestData(), New(), pkgs...)
 }
 
 func Test_getPkgFromPath(t *testing.T) {

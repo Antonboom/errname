@@ -12,12 +12,14 @@ import (
 	"golang.org/x/tools/go/ast/inspector"
 )
 
-// ErrName is the analyzer itself.
-var ErrName = &analysis.Analyzer{
-	Name:     "errname",
-	Doc:      "Checks that sentinel errors are prefixed with the `Err` and error types are suffixed with the `Error`.",
-	Run:      run,
-	Requires: []*analysis.Analyzer{inspect.Analyzer},
+// New returns new errname analyzer.
+func New() *analysis.Analyzer {
+	return &analysis.Analyzer{
+		Name:     "errname",
+		Doc:      "Checks that sentinel errors are prefixed with the `Err` and error types are suffixed with the `Error`.",
+		Run:      run,
+		Requires: []*analysis.Analyzer{inspect.Analyzer},
+	}
 }
 
 type stringSet = map[string]struct{}

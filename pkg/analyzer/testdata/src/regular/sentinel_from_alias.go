@@ -7,10 +7,10 @@ import (
 
 var (
 	ErrAlias = stderrors.New("err from alias")
-	AliasErr = stderrors.New("err from alias") // want "the sentinel error `AliasErr` should be of the form ErrXxx"
+	AliasErr = stderrors.New("err from alias") // want "the variable name `AliasErr` should conform to the `ErrXxx` format"
 )
 
 var (
 	ErrOutOfSize2   = stdfmt.Errorf("out of size (max %d)", maxSize)
-	OutOfSizeError2 = stdfmt.Errorf("out of size (max %d)", maxSize) // want "the sentinel error `OutOfSizeError2` should be of the form ErrXxx"
+	OutOfSizeError2 = stdfmt.Errorf("out of size (max %d)", maxSize) // want "the variable name `OutOfSizeError2` should conform to the `ErrXxx` format"
 )

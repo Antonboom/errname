@@ -9,14 +9,14 @@ type DNSConfigError struct{}
 
 func (D DNSConfigError) Error() string { return "DNS config error" }
 
-type someTypeWithoutPtr struct{}           // want "the error type `someTypeWithoutPtr` should be of the form xxxError"
+type someTypeWithoutPtr struct{}           // want "the type name `someTypeWithoutPtr` should conform to the `xxxError` format"
 func (s someTypeWithoutPtr) Error() string { return "someTypeWithoutPtr" }
 
-type SomeTypeWithoutPtr struct{}           // want "the error type `SomeTypeWithoutPtr` should be of the form XxxError"
+type SomeTypeWithoutPtr struct{}           // want "the type name `SomeTypeWithoutPtr` should conform to the `XxxError` format"
 func (s SomeTypeWithoutPtr) Error() string { return "SomeTypeWithoutPtr" }
 
-type someTypeWithPtr struct{}            // want "the error type `someTypeWithPtr` should be of the form xxxError"
+type someTypeWithPtr struct{}            // want "the type name `someTypeWithPtr` should conform to the `xxxError` format"
 func (s *someTypeWithPtr) Error() string { return "someTypeWithPtr" }
 
-type SomeTypeWithPtr struct{}            // want "the error type `SomeTypeWithPtr` should be of the form XxxError"
+type SomeTypeWithPtr struct{}            // want "the type name `SomeTypeWithPtr` should conform to the `XxxError` format"
 func (s *SomeTypeWithPtr) Error() string { return "SomeTypeWithPtr" }

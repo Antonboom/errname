@@ -111,7 +111,7 @@ func reportAboutErrorType(pass *analysis.Pass, typePos token.Pos, typeName strin
 	} else {
 		form = "XxxError"
 	}
-	pass.Reportf(typePos, "the error type `%s` should be of the form %s", typeName, form)
+	pass.Reportf(typePos, "the type name `%s` should conform to the `%s` format", typeName, form)
 }
 
 func reportAboutErrorVar(pass *analysis.Pass, pos token.Pos, varName string) {
@@ -121,7 +121,7 @@ func reportAboutErrorVar(pass *analysis.Pass, pos token.Pos, varName string) {
 	} else {
 		form = "ErrXxx"
 	}
-	pass.Reportf(pos, "the sentinel error `%s` should be of the form %s", varName, form)
+	pass.Reportf(pos, "the variable name `%s` should conform to the `%s` format", varName, form)
 }
 
 func getPkgFromPath(p string) string {

@@ -53,7 +53,7 @@ Just don't enable the linter.
 
 ```go
 // Bad.
-type DecodeErr struct{}            // the error type `DecodeErr` should be of the form xxxError
+type DecodeErr struct{} // the type name `DecodeErr` should conform to the `xxxError` format
 func (d *DecodeErr) Error() string { /*...*/ }
 
 // Good.
@@ -63,7 +63,7 @@ func (d *DecodeError) Error() string { /*...*/ }
 
 ```go
 // Bad.
-var InvalidURLErr = errors.New("invalid url") // the sentinel error `InvalidURLErr` should be of the form ErrXxx
+var InvalidURLErr = errors.New("invalid url") // the variable name `InvalidURLErr` should conform to the `ErrXxx` format 
 
 // Good.
 var ErrInvalidURL = errors.New("invalid url") // or errInvalidURL
@@ -111,7 +111,7 @@ var ErrSupported error = new(net.AddrError)
 ```
 
 - Linter only checks the correctness of the suffix and prefix and their **uniqueness**. The logical meaning of the
-  identifier remains on the developer's conscience.
+  identifier remains on the developer's conscience:
 
 ```go
 // Bad.
@@ -140,110 +140,109 @@ func (ve ValidationErrors) Error() string { /*...*/ }
   <summary>Golang source code</summary>
 
 ```go
-$ errname./src/...
-/usr/local/go /src/runtime/error.go:72:6: the error type `errorString` should be of the form xxxError
-/usr/local/go /src/runtime/error.go:80:6: the error type `errorAddressString` should be of the form xxxError
-/usr/local/go /src/runtime/panic.go:180:5: the sentinel error `shiftError` should be of the form errXxx
-/usr/local/go /src/runtime/panic.go:187:5: the sentinel error `divideError` should be of the form errXxx
-/usr/local/go /src/runtime/panic.go:194:5: the sentinel error `overflowError` should be of the form errXxx
-/usr/local/go /src/runtime/panic.go:201:5: the sentinel error `floatError` should be of the form errXxx
-/usr/local/go /src/runtime/panic.go:208:5: the sentinel error `memoryError` should be of the form errXxx
-/usr/local/go /src/errors/errors.go:63:6: the error type `errorString` should be of the form xxxError
-/usr/local/go /src/math/bits/bits_errors.go:12:5: the sentinel error `overflowError` should be of the form errXxx
-/usr/local/go /src/math/bits/bits_errors.go:15:5: the sentinel error `divideError` should be of the form errXxx
-/usr/local/go /src/syscall/syscall_unix.go:114:6: the error type `Errno` should be of the form XxxError
-/usr/local/go /src/time/format.go:394:5: the sentinel error `atoiError` should be of the form errXxx
-/usr/local/go /src/time/zoneinfo_read.go:110:5: the sentinel error `badData` should be of the form errXxx
-/usr/local/go /src/io/fs/walk.go:15:5: the sentinel error `SkipDir` should be of the form ErrXxx
-/usr/local/go /src/fmt/scan.go:465:5: the sentinel error `complexError` should be of the form errXxx
-/usr/local/go /src/fmt/scan.go:466:5: the sentinel error `boolError` should be of the form errXxx
-/usr/local/go /src/archive/tar/common.go:39:6: the error type `headerError` should be of the form xxxError
-/usr/local/go/src/context/context.go:157:5: the sentinel error `Canceled` should be of the form ErrXxx
-/usr/local/go/src/context/context.go:161:5: the sentinel error `DeadlineExceeded` should be of the form ErrXxx
-/usr/local/go/src/math/big/float.go:77:6: the error type `ErrNaN` should be of the form XxxError
-/usr/local/go /src/crypto/x509/internal/macos/security.go:39:6: the error type `OSStatus` should be of the form XxxError
-/usr/local/go /src/net/cgo_unix.go:34:6: the error type `addrinfoErrno` should be of the form xxxError
-/usr/local/go /src/crypto/x509/x509.go:875:6: the error type `UnhandledCriticalExtension` should be of the form XxxError
-/usr/local/go/src/crypto/x509/pem_decrypt.go:110:5: the sentinel error `IncorrectPasswordError` should be of the form ErrXxx
-/usr/local/go /src/crypto/x509/root.go:18:2: the sentinel error `systemRootsErr` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:18:2: the sentinel error `alertCloseNotify` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:19:2: the sentinel error `alertUnexpectedMessage` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:20:2: the sentinel error `alertBadRecordMAC` should be of the form errXxx
-/usr/local/go/src/crypto/tls/alert.go:21:2: the sentinel error `alertDecryptionFailed` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:22:2: the sentinel error `alertRecordOverflow` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:23:2: the sentinel error `alertDecompressionFailure` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:24:2: the sentinel error `alertHandshakeFailure` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:25:2: the sentinel error `alertBadCertificate` should be of the form errXxx
-/usr/local/go/src/crypto/tls/alert.go:26:2: the sentinel error `alertUnsupportedCertificate` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:27:2: the sentinel error `alertCertificateRevoked` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:28:2: the sentinel error `alertCertificateExpired` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:29:2: the sentinel error `alertCertificateUnknown` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:30:2: the sentinel error `alertIllegalParameter` should be of the form errXxx
-/usr/local/go/src/crypto/tls/alert.go:31:2: the sentinel error `alertUnknownCA` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:32:2: the sentinel error `alertAccessDenied` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:33:2: the sentinel error `alertDecodeError` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:34:2: the sentinel error `alertDecryptError` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:35:2: the sentinel error `alertExportRestriction` should be of the form errXxx
-/usr/local/go/src/crypto/tls/alert.go:36:2: the sentinel error `alertProtocolVersion` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:37:2: the sentinel error `alertInsufficientSecurity` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:38:2: the sentinel error `alertInternalError` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:39:2: the sentinel error `alertInappropriateFallback` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:40:2: the sentinel error `alertUserCanceled` should be of the form errXxx
-/usr/local/go/src/crypto/tls/alert.go:41:2: the sentinel error `alertNoRenegotiation` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:42:2: the sentinel error `alertMissingExtension` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:43:2: the sentinel error `alertUnsupportedExtension` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:44:2: the sentinel error `alertCertificateUnobtainable` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:45:2: the sentinel error `alertUnrecognizedName` should be of the form errXxx
-/usr/local/go/src/crypto/tls/alert.go:46:2: the sentinel error `alertBadCertificateStatusResponse` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:47:2: the sentinel error `alertBadCertificateHashValue` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:48:2: the sentinel error `alertUnknownPSKIdentity` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:49:2: the sentinel error `alertCertificateRequired` should be of the form errXxx
-/usr/local/go /src/crypto/tls/alert.go:50:2: the sentinel error `alertNoApplicationProtocol` should be of the form errXxx
-/usr/local/go/src/path/filepath/path.go:337:5: the sentinel error `SkipDir` should be of the form ErrXxx
-/usr/local/go /src/net/http/h2_bundle.go:1016:5: the sentinel error `http2errReadEmpty` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:1212:2: the sentinel error `http2errMixPseudoHeaderTypes` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:1213:2: the sentinel error `http2errPseudoAfterRegular` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:1712:5: the sentinel error `http2ErrFrameTooLarge` should be of the form errXxx
-/usr/local/go/src/net/http/h2_bundle.go:1866:2: the sentinel error `http2errStreamID` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:1867:2: the sentinel error `http2errDepStreamID` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:1868:2: the sentinel error `http2errPadLength` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:1869:2: the sentinel error `http2errPadBytes` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:3400:5: the sentinel error `http2errTimeout` should be of the form errXxx
-/usr/local/go/src/net/http/h2_bundle.go:3519:5: the sentinel error `http2errClosedPipeWrite` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:3629:2: the sentinel error `http2errClientDisconnected` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:3630:2: the sentinel error `http2errClosedBody` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:3631:2: the sentinel error `http2errHandlerComplete` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:3632:2: the sentinel error `http2errStreamClosed` should be of the form errXxx
-/usr/local/go/src/net/http/h2_bundle.go:4526:5: the sentinel error `http2errPrefaceTimeout` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:4746:5: the sentinel error `http2errHandlerPanicked` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:6287:2: the sentinel error `http2ErrRecursivePush` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:6288:2: the sentinel error `http2ErrPushLimitReached` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:6930:5: the sentinel error `http2ErrNoCachedConn` should be of the form errXxx
-/usr/local/go/src/net/http/h2_bundle.go:7016:2: the sentinel error `http2errClientConnClosed` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:7017:2: the sentinel error `http2errClientConnUnusable` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:7018:2: the sentinel error `http2errClientConnGotGoAway` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:7471:5: the sentinel error `http2errRequestCanceled` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:7803:2: the sentinel error `http2errStopReqBodyWrite` should be of the form errXxx
-/usr/local/go/src/net/http/h2_bundle.go:7806:2: the sentinel error `http2errStopReqBodyWriteAndCancel` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:7808:2: the sentinel error `http2errReqBodyTooLong` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:8667:5: the sentinel error `http2errClosedResponseBody` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:9021:2: the sentinel error `http2errResponseHeaderListSize` should be of the form errXxx
-/usr/local/go /src/net/http/h2_bundle.go:9022:2: the sentinel error `http2errRequestHeaderListSize` should be of the form errXxx
-/usr/local/go/src/go /scanner/errors.go:37:6: the error type `ErrorList` should be of the form XxxError
-/usr/local/go /src/html/template/template.go:34:5: the sentinel error `escapeOK` should be of the form errXxx
-/usr/local/go /src/image/png/reader.go:128:5: the sentinel error `chunkOrderError` should be of the form errXxx
-/usr/local/go /src/bufio/scan_test.go:308:5: the sentinel error `testError` should be of the form errXxx
-/usr/local/go /src/crypto/tls/handshake_client_test.go:1993:5: the sentinel error `brokenConnErr` should be of the form errXxx
-/usr/local/go /src/database/sql/sql_test.go:4281:5: the sentinel error `pingError` should be of the form errXxx
-/usr/local/go/src/errors/wrap_test.go:216:6: the error type `errorT` should be of the form xxxError
-/usr/local/go/src/errors/wrap_test.go:229:6: the error type `errorUncomparable` should be of the form xxxError
-/usr/local/go/src/fmt/errors_test.go:75:6: the error type `errString` should be of the form xxxError
-/usr/local/go/src/html/template/exec_test.go:233:5: the sentinel error `myError` should be of the form errXxx
-/usr/local/go /src/html/template/exec_test.go:1313:5: the sentinel error `alwaysError` should be of the form errXxx
-/usr/local/go /src/net/http/transport_test.go:6280:5: the sentinel error `timeoutProtoErr` should be of the form errXxx
-/usr/local/go /src/text/template/exec_test.go:229:5: the sentinel error `myError` should be of the form errXxx
-/usr/local/go /src/text/template/exec_test.go:1305:5: the sentinel error `alwaysError` should be of the form errXxx
-
+$ errname ./src/...
+go/src/runtime/error.go:72:6: the type name `errorString` should conform to the `xxxError` format
+go/src/runtime/error.go:80:6: the type name `errorAddressString` should conform to the `xxxError` format
+go/src/runtime/panic.go:180:5: the variable name `shiftError` should conform to the `errXxx` format
+go/src/runtime/panic.go:187:5: the variable name `divideError` should conform to the `errXxx` format
+go/src/runtime/panic.go:194:5: the variable name `overflowError` should conform to the `errXxx` format
+go/src/runtime/panic.go:201:5: the variable name `floatError` should conform to the `errXxx` format
+go/src/runtime/panic.go:208:5: the variable name `memoryError` should conform to the `errXxx` format
+go/src/errors/errors.go:63:6: the type name `errorString` should conform to the `xxxError` format
+go/src/math/bits/bits_errors.go:12:5: the variable name `overflowError` should conform to the `errXxx` format
+go/src/math/bits/bits_errors.go:15:5: the variable name `divideError` should conform to the `errXxx` format
+go/src/syscall/syscall_unix.go:114:6: the type name `Errno` should conform to the `XxxError` format
+go/src/time/format.go:394:5: the variable name `atoiError` should conform to the `errXxx` format
+go/src/time/zoneinfo_read.go:110:5: the variable name `badData` should conform to the `errXxx` format
+go/src/io/fs/walk.go:15:5: the variable name `SkipDir` should conform to the `ErrXxx` format
+go/src/fmt/scan.go:465:5: the variable name `complexError` should conform to the `errXxx` format
+go/src/fmt/scan.go:466:5: the variable name `boolError` should conform to the `errXxx` format
+go/src/archive/tar/common.go:39:6: the type name `headerError` should conform to the `xxxError` format
+go/src/context/context.go:157:5: the variable name `Canceled` should conform to the `ErrXxx` format
+go/src/context/context.go:161:5: the variable name `DeadlineExceeded` should conform to the `ErrXxx` format
+go/src/math/big/float.go:77:6: the type name `ErrNaN` should conform to the `XxxError` format
+go/src/crypto/x509/internal/macos/security.go:39:6: the type name `OSStatus` should conform to the `XxxError` format
+go/src/net/cgo_unix.go:34:6: the type name `addrinfoErrno` should conform to the `xxxError` format
+go/src/crypto/x509/x509.go:875:6: the type name `UnhandledCriticalExtension` should conform to the `XxxError` format
+go/src/crypto/x509/pem_decrypt.go:110:5: the variable name `IncorrectPasswordError` should conform to the `ErrXxx` format
+go/src/crypto/x509/root.go:18:2: the variable name `systemRootsErr` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:18:2: the variable name `alertCloseNotify` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:19:2: the variable name `alertUnexpectedMessage` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:20:2: the variable name `alertBadRecordMAC` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:21:2: the variable name `alertDecryptionFailed` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:22:2: the variable name `alertRecordOverflow` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:23:2: the variable name `alertDecompressionFailure` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:24:2: the variable name `alertHandshakeFailure` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:25:2: the variable name `alertBadCertificate` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:26:2: the variable name `alertUnsupportedCertificate` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:27:2: the variable name `alertCertificateRevoked` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:28:2: the variable name `alertCertificateExpired` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:29:2: the variable name `alertCertificateUnknown` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:30:2: the variable name `alertIllegalParameter` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:31:2: the variable name `alertUnknownCA` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:32:2: the variable name `alertAccessDenied` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:33:2: the variable name `alertDecodeError` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:34:2: the variable name `alertDecryptError` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:35:2: the variable name `alertExportRestriction` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:36:2: the variable name `alertProtocolVersion` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:37:2: the variable name `alertInsufficientSecurity` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:38:2: the variable name `alertInternalError` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:39:2: the variable name `alertInappropriateFallback` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:40:2: the variable name `alertUserCanceled` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:41:2: the variable name `alertNoRenegotiation` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:42:2: the variable name `alertMissingExtension` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:43:2: the variable name `alertUnsupportedExtension` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:44:2: the variable name `alertCertificateUnobtainable` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:45:2: the variable name `alertUnrecognizedName` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:46:2: the variable name `alertBadCertificateStatusResponse` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:47:2: the variable name `alertBadCertificateHashValue` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:48:2: the variable name `alertUnknownPSKIdentity` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:49:2: the variable name `alertCertificateRequired` should conform to the `errXxx` format
+go/src/crypto/tls/alert.go:50:2: the variable name `alertNoApplicationProtocol` should conform to the `errXxx` format
+go/src/path/filepath/path.go:337:5: the variable name `SkipDir` should conform to the `ErrXxx` format
+go/src/net/http/h2_bundle.go:1016:5: the variable name `http2errReadEmpty` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:1212:2: the variable name `http2errMixPseudoHeaderTypes` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:1213:2: the variable name `http2errPseudoAfterRegular` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:1712:5: the variable name `http2ErrFrameTooLarge` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:1866:2: the variable name `http2errStreamID` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:1867:2: the variable name `http2errDepStreamID` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:1868:2: the variable name `http2errPadLength` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:1869:2: the variable name `http2errPadBytes` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:3400:5: the variable name `http2errTimeout` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:3519:5: the variable name `http2errClosedPipeWrite` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:3629:2: the variable name `http2errClientDisconnected` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:3630:2: the variable name `http2errClosedBody` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:3631:2: the variable name `http2errHandlerComplete` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:3632:2: the variable name `http2errStreamClosed` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:4526:5: the variable name `http2errPrefaceTimeout` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:4746:5: the variable name `http2errHandlerPanicked` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:6287:2: the variable name `http2ErrRecursivePush` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:6288:2: the variable name `http2ErrPushLimitReached` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:6930:5: the variable name `http2ErrNoCachedConn` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:7016:2: the variable name `http2errClientConnClosed` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:7017:2: the variable name `http2errClientConnUnusable` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:7018:2: the variable name `http2errClientConnGotGoAway` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:7471:5: the variable name `http2errRequestCanceled` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:7803:2: the variable name `http2errStopReqBodyWrite` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:7806:2: the variable name `http2errStopReqBodyWriteAndCancel` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:7808:2: the variable name `http2errReqBodyTooLong` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:8667:5: the variable name `http2errClosedResponseBody` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:9021:2: the variable name `http2errResponseHeaderListSize` should conform to the `errXxx` format
+go/src/net/http/h2_bundle.go:9022:2: the variable name `http2errRequestHeaderListSize` should conform to the `errXxx` format
+go/src/go/scanner/errors.go:37:6: the type name `ErrorList` should conform to the `XxxError` format
+go/src/html/template/template.go:34:5: the variable name `escapeOK` should conform to the `errXxx` format
+go/src/image/png/reader.go:128:5: the variable name `chunkOrderError` should conform to the `errXxx` format
+go/src/bufio/scan_test.go:308:5: the variable name `testError` should conform to the `errXxx` format
+go/src/crypto/tls/handshake_client_test.go:1993:5: the variable name `brokenConnErr` should conform to the `errXxx` format
+go/src/database/sql/sql_test.go:4281:5: the variable name `pingError` should conform to the `errXxx` format
+go/src/errors/wrap_test.go:216:6: the type name `errorT` should conform to the `xxxError` format
+go/src/errors/wrap_test.go:229:6: the type name `errorUncomparable` should conform to the `xxxError` format
+go/src/fmt/errors_test.go:75:6: the type name `errString` should conform to the `xxxError` format
+go/src/html/template/exec_test.go:233:5: the variable name `myError` should conform to the `errXxx` format
+go/src/html/template/exec_test.go:1313:5: the variable name `alwaysError` should conform to the `errXxx` format
+go/src/net/http/transport_test.go:6280:5: the variable name `timeoutProtoErr` should conform to the `errXxx` format
+go/src/text/template/exec_test.go:229:5: the variable name `myError` should conform to the `errXxx` format
+go/src/text/template/exec_test.go:1305:5: the variable name `alwaysError` should conform to the `errXxx` format
 ```
 
 </details>
@@ -263,19 +262,19 @@ $ errname./...
 
 ```go
 $ errname./...
-terraform/internal/getmodules/file_detector.go:59:6: the error type `MaybeRelativePathErr` should be of the form XxxError
-terraform/internal/getproviders/errors.go:13:6: the error type `ErrHostNoProviders` should be of the form XxxError
-terraform/internal/getproviders/errors.go:39:6: the error type `ErrHostUnreachable` should be of the form XxxError
-terraform/internal/getproviders/errors.go:57:6: the error type `ErrUnauthorized` should be of the form XxxError
-terraform/internal/getproviders/errors.go:80:6: the error type `ErrProviderNotFound` should be of the form XxxError
-terraform/internal/getproviders/errors.go:104:6: the error type `ErrRegistryProviderNotKnown` should be of the form XxxError
-terraform/internal/getproviders/errors.go:123:6: the error type `ErrPlatformNotSupported` should be of the form XxxError
-terraform/internal/getproviders/errors.go:159:6: the error type `ErrProtocolNotSupported` should be of the form XxxError
-terraform/internal/getproviders/errors.go:181:6: the error type `ErrQueryFailed` should be of the form XxxError
-terraform/internal/getproviders/errors.go:219:6: the error type `ErrRequestCanceled` should be of the form XxxError
-terraform/internal/registry/errors.go:10:6: the error type `errModuleNotFound` should be of the form xxxError
-terraform/internal/backend/remote-state/consul/client.go:36:5: the sentinel error `lostLockErr` should be of the form errXxx
-terraform/internal/command/cliconfig/credentials.go:408:6: the error type `ErrUnwritableHostCredentials` should be of the form XxxError
+terraform/internal/getmodules/file_detector.go:59:6: the type name `MaybeRelativePathErr` should conform to the `XxxError` format
+terraform/internal/getproviders/errors.go:13:6: the type name `ErrHostNoProviders` should conform to the `XxxError` format
+terraform/internal/getproviders/errors.go:39:6: the type name `ErrHostUnreachable` should conform to the `XxxError` format
+terraform/internal/getproviders/errors.go:57:6: the type name `ErrUnauthorized` should conform to the `XxxError` format
+terraform/internal/getproviders/errors.go:80:6: the type name `ErrProviderNotFound` should conform to the `XxxError` format
+terraform/internal/getproviders/errors.go:104:6: the type name `ErrRegistryProviderNotKnown` should conform to the `XxxError` format
+terraform/internal/getproviders/errors.go:123:6: the type name `ErrPlatformNotSupported` should conform to the `XxxError` format
+terraform/internal/getproviders/errors.go:159:6: the type name `ErrProtocolNotSupported` should conform to the `XxxError` format
+terraform/internal/getproviders/errors.go:181:6: the type name `ErrQueryFailed` should conform to the `XxxError` format
+terraform/internal/getproviders/errors.go:219:6: the type name `ErrRequestCanceled` should conform to the `XxxError` format
+terraform/internal/registry/errors.go:10:6: the type name `errModuleNotFound` should conform to the `xxxError` format
+terraform/internal/backend/remote-state/consul/client.go:36:5: the variable name `lostLockErr` should conform to the `errXxx` format
+terraform/internal/command/cliconfig/credentials.go:408:6: the type name `ErrUnwritableHostCredentials` should conform to the `XxxError` format
 ```
 
 </details>

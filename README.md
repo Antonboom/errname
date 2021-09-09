@@ -49,6 +49,11 @@ This is a good rule to improve the consistency of your code. **More uniformity, 
 
 Just don't enable the linter.
 
+### Why not [revive/error-naming](https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#error-naming)?
+
+At the time of writing this linter, I was unaware of **revive**. <br>
+**errname** performs more complex and better checks anyway.
+
 ## Examples
 
 ```go

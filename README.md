@@ -5,7 +5,7 @@
 [![Coverage](https://coveralls.io/repos/github/Antonboom/errname/badge.svg?branch=master)](https://coveralls.io/github/Antonboom/errname?branch=master)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
-The [Golang](https://golang.org/) linter that checks that sentinel errors are prefixed with the `Err` and error types
+Checks that sentinel errors are prefixed with the `Err` and error types
 are suffixed with the `Error`.
 
 ## Installation & usage

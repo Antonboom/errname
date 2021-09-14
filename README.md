@@ -78,6 +78,11 @@ More examples in [tests](https://github.com/Antonboom/errname/blob/master/pkg/an
 
 ## Assumptions
 
+<details>
+  <summary>Click to expand</summary>
+
+<br>
+
 - Only package level variables (and constants) are checked.
 - Initialisms are ignored. As a result, all identifiers in a single case are ignored:
 
@@ -139,6 +144,8 @@ type ValidationErrors []string
 func (ve ValidationErrors) Error() string { /*...*/ }
 ```
 
+</details>
+        
 ## Large projects examples
 
 <details>

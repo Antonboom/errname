@@ -11,7 +11,7 @@ are suffixed with the `Error`.
 ## Installation & usage
 
 ```
-$ go get github.com/Antonboom/errname
+$ go install github.com/Antonboom/errname@latest
 $ errname ./...
 ```
 

@@ -6,7 +6,10 @@ issues:
 
 linters-settings:
   gci:
-    local-prefixes: github.com/Antonboom/errname
+    sections:
+      - standard
+      - default
+      - prefix(github.com/Antonboom/errname)
 
 linters:
   disable-all: true

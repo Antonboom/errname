@@ -15,6 +15,7 @@ linters:
   disable-all: true
   enable:
     - asciicheck
+    - bidichk
     - bodyclose
     - deadcode
     - depguard
@@ -22,6 +23,9 @@ linters:
     - dupl
     - durationcheck
     - errcheck
+    - errchkjson
+    - errname
+    - execinquery
     - exhaustive
     - exportloopref
     - forbidigo
@@ -51,9 +55,11 @@ linters:
     - misspell
     - nakedret
     - nilerr
+    - nilnil
     - nestif
     - noctx
     - nolintlint
+    - nosprintfhostport
     - prealloc
     - predeclared
     - revive
@@ -63,6 +69,7 @@ linters:
     - structcheck
     - stylecheck
     - tagliatelle
+    - tenv
     - thelper
     - typecheck
     - unconvert

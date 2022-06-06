@@ -43,8 +43,8 @@ func run(pass *analysis.Pass) (interface{}, error) {
 		}
 	})
 
-	allTypes := stringSet{}
-	typesSpecs := map[string]*ast.TypeSpec{}
+	allTypes := make(stringSet, len(types))
+	typesSpecs := make(map[string]*ast.TypeSpec, len(types))
 	insp.Preorder(types, func(node ast.Node) {
 		t := node.(*ast.TypeSpec)
 		allTypes[t.Name.Name] = struct{}{}
@@ -102,17 +102,21 @@ func run(pass *analysis.Pass) (interface{}, error) {
 }
 
 func reportAboutErrorType(pass *analysis.Pass, typePos token.Pos, typeName string, isArrayType bool) {
-	var form string
+	var form strings.Builder
+
+	form.Grow(9) //nolint:gomnd
+
 	if unicode.IsLower([]rune(typeName)[0]) {
-		form = "xxxError"
+		form.WriteString("xxxError")
 	} else {
-		form = "XxxError"
+		form.WriteString("XxxError")
 	}
 
 	if isArrayType {
-		form += "s"
+		form.WriteString("s")
 	}
-	pass.Reportf(typePos, "the type name `%s` should conform to the `%s` format", typeName, form)
+
+	pass.Reportf(typePos, "the type name `%s` should conform to the `%s` format", typeName, form.String())
 }
 
 func reportAboutErrorVar(pass *analysis.Pass, pos token.Pos, varName string) {

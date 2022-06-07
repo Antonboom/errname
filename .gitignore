@@ -2,3 +2,5 @@
 .vscode/
 .DS_Store
 coverage.out
+*.mem
+*.cpu

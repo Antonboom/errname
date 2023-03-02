@@ -14,10 +14,10 @@ linters-settings:
 linters:
   disable-all: true
   enable:
+    - asasalint
     - asciicheck
     - bidichk
     - bodyclose
-    - deadcode
     - depguard
     - dogsled
     - dupl
@@ -30,6 +30,7 @@ linters:
     - exportloopref
     - forbidigo
     - gci
+    - gocheckcompilerdirectives
     - gocognit
     - goconst
     - gocritic
@@ -47,7 +48,6 @@ linters:
     - gosec
     - gosimple
     - govet
-    - ifshort
     - importas
     - ineffassign
     - lll
@@ -62,19 +62,20 @@ linters:
     - nosprintfhostport
     - prealloc
     - predeclared
+    - reassign
     - revive
-    - rowserrcheck
     - sqlclosecheck
     - staticcheck
-    - structcheck
     - stylecheck
     - tagliatelle
     - tenv
+    - testableexamples
     - thelper
+    - tparallel
     - typecheck
     - unconvert
     - unparam
     - unused
-    - varcheck
+    - usestdlibvars
     - wastedassign
     - whitespace

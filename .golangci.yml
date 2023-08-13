@@ -18,7 +18,6 @@ linters:
     - asciicheck
     - bidichk
     - bodyclose
-    - depguard
     - dogsled
     - dupl
     - durationcheck
@@ -53,6 +52,7 @@ linters:
     - lll
     - makezero
     - misspell
+    - mirror
     - nakedret
     - nilerr
     - nilnil

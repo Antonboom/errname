@@ -112,6 +112,18 @@ func NewDecodeError() error {
 
 - Package aliases are not supported if the source package and its directory differ in name.
 
+- Nested error types are not supported
+
+```go
+type timeoutErr struct { // no warning from the linter :(
+    error
+}
+
+type DeadlineErr struct { //  no warning from the linter :(
+    timeoutErr
+}
+```
+
 - Not supported sentinel errors that were created by an external type or func (except `errors`/`fmt`) and that do not 
   have an explicit type `error`:
 

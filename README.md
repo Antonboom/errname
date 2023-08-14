@@ -76,7 +76,7 @@ var ErrInvalidURL = errors.New("invalid url") // or errInvalidURL
 
 More examples in [tests](https://github.com/Antonboom/errname/blob/master/pkg/analyzer/facts_test.go).
 
-## Assumptions
+## Assumptions (open to contributors 🙏🏻)
 
 <details>
   <summary>Click to expand</summary>

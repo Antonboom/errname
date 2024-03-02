@@ -1,5 +1,6 @@
 # errname
 
+![Latest release](https://img.shields.io/github/v/release/Antonboom/errname)
 [![CI](https://github.com/Antonboom/errname/actions/workflows/ci.yml/badge.svg)](https://github.com/Antonboom/errname/actions/workflows/ci.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Antonboom/errname)](https://goreportcard.com/report/github.com/Antonboom/errname)
 [![Coverage](https://coveralls.io/repos/github/Antonboom/errname/badge.svg?branch=master)](https://coveralls.io/github/Antonboom/errname?branch=master)

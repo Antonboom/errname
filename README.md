@@ -18,7 +18,7 @@ $ errname ./...
 
 ## Motivation
 
-[The convention](https://github.com/golang/go/wiki/Errors#naming) states that
+[The convention](https://go.dev/wiki/Errors#naming) states that
 > Error types end in "Error" and error variables start with "Err" or "err".
 
 This can be found in the standard Go library:

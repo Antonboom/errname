@@ -41,10 +41,12 @@ func isValidErrorArrayTypeName(s string) bool {
 	words := split(s)
 	wordsCnt := wordsCount(words)
 
-	if wordsCnt["errors"] != 1 {
+	if wordsCnt["errors"] != 1 && wordsCnt["error"] != 1 {
 		return false
 	}
-	return words[len(words)-1] == "errors"
+
+	lastWord := words[len(words)-1]
+	return lastWord == "errors" || lastWord == "error"
 }
 
 func isValidErrorVarName(s string) bool {

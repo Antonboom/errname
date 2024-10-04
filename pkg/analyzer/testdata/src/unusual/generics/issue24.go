@@ -12,7 +12,7 @@ type (
 	Resp any
 )
 
-type timeoutErr[REQ Req, RESP Resp] struct { //  want "the type name `timeoutErr` should conform to the `xxxError` format"
+type timeoutErr[REQ Req, RESP Resp] struct { //  want "the error type name `timeoutErr` should conform to the `xxxError` format"
 	err     error
 	sending bool
 }
@@ -37,10 +37,10 @@ func (e *timeoutErr[REQ, RESP]) Unwrap() error {
 type TimeoutError[REQ Req, RESP Resp] struct{} //
 func (TimeoutError[REQ, RESP]) Error() string  { return "timeouted" }
 
-type ValErr[A, B, C, D, E, F any] struct{}     //  want "the type name `ValErr` should conform to the `XxxError` format"
+type ValErr[A, B, C, D, E, F any] struct{}     //  want "the error type name `ValErr` should conform to the `XxxError` format"
 func (ValErr[A, B, C, D, E, F]) Error() string { return "boom!" }
 
 var (
 	ErrTimeout error = &timeoutErr[*http.Request, *http.Response]{err: context.DeadlineExceeded, sending: false}
-	tErr       error = &timeoutErr[string, string]{err: context.DeadlineExceeded, sending: true} // want "the variable name `tErr` should conform to the `errXxx` format"
+	tErr       error = &timeoutErr[string, string]{err: context.DeadlineExceeded, sending: true} // want "the sentinel error name `tErr` should conform to the `errXxx` format"
 )

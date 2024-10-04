@@ -18,15 +18,14 @@ linters:
     - asciicheck
     - bidichk
     - bodyclose
+    - copyloopvar
     - dogsled
     - dupl
     - durationcheck
     - errcheck
     - errchkjson
     - errname
-    - execinquery
     - exhaustive
-    - exportloopref
     - forbidigo
     - gci
     - gocheckcompilerdirectives
@@ -40,7 +39,6 @@ linters:
     - gofumpt
     - goheader
     - goimports
-    - gomnd
     - gomoddirectives
     - gomodguard
     - goprintffuncname
@@ -53,6 +51,7 @@ linters:
     - makezero
     - misspell
     - mirror
+    - mnd
     - nakedret
     - nilerr
     - nilnil

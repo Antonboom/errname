@@ -7,7 +7,7 @@
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 Checks that sentinel errors are prefixed with the `Err` and error types
-are suffixed with the `Error`.
+are suffixed with the `Error` or `Errors`.
 
 ## Installation & usage
 

@@ -31,3 +31,12 @@ func errInsideFuncIsNotSentinel() error {
 	var lastErr error
 	return lastErr
 }
+
+var _ = func() {
+	run("", func() {
+		var orderErr error
+		_ = orderErr
+	})
+}
+
+func run(_ string, _ func()) {}

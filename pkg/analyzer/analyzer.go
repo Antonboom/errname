@@ -46,6 +46,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			if exprImplementsError(pass, ident) && !isValidErrorVarName(ident.Name) {
 				reportAboutSentinelError(pass, v.Pos(), ident.Name)
 			}
+			return false
 
 		case *ast.TypeSpec:
 			tt := pass.TypesInfo.TypeOf(v.Name)
@@ -65,6 +66,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			} else if !isValidErrorTypeName(name) {
 				reportAboutErrorType(pass, v.Pos(), name, false)
 			}
+			return false
 		}
 
 		return true

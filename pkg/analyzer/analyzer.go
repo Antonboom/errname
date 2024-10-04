@@ -61,10 +61,10 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			name := v.Name.Name
 			if _, ok := v.Type.(*ast.ArrayType); ok {
 				if !isValidErrorArrayTypeName(name) {
-					reportAboutErrorType(pass, v.Pos(), name, true)
+					reportAboutArrayErrorType(pass, v.Pos(), name)
 				}
 			} else if !isValidErrorTypeName(name) {
-				reportAboutErrorType(pass, v.Pos(), name, false)
+				reportAboutErrorType(pass, v.Pos(), name)
 			}
 			return false
 		}
@@ -75,7 +75,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 	return nil, nil //nolint:nilnil
 }
 
-func reportAboutErrorType(pass *analysis.Pass, typePos token.Pos, typeName string, isArrayType bool) {
+func reportAboutErrorType(pass *analysis.Pass, typePos token.Pos, typeName string) {
 	var form string
 	if unicode.IsLower([]rune(typeName)[0]) {
 		form = "xxxError"
@@ -83,10 +83,18 @@ func reportAboutErrorType(pass *analysis.Pass, typePos token.Pos, typeName strin
 		form = "XxxError"
 	}
 
-	if isArrayType {
-		form += "s"
-	}
 	pass.Reportf(typePos, "the error type name `%s` should conform to the `%s` format", typeName, form)
+}
+
+func reportAboutArrayErrorType(pass *analysis.Pass, typePos token.Pos, typeName string) {
+	var forms string
+	if unicode.IsLower([]rune(typeName)[0]) {
+		forms = "`xxxErrors` or `xxxError`"
+	} else {
+		forms = "`XxxErrors` or `XxxError`"
+	}
+
+	pass.Reportf(typePos, "the error type name `%s` should conform to the %s format", typeName, forms)
 }
 
 func reportAboutSentinelError(pass *analysis.Pass, pos token.Pos, varName string) {

@@ -188,6 +188,8 @@ func Test_isValidErrorArrayTypeName(t *testing.T) {
 		"validationErrors",
 		"ERRORS",
 		"errors",
+		"IncompatiblePairError",
+		"multiError",
 	} {
 		if !isValidErrorArrayTypeName(tt) {
 			t.Errorf("%q must be valid error array type name", tt)
@@ -197,6 +199,10 @@ func Test_isValidErrorArrayTypeName(t *testing.T) {
 	for _, tt := range []string{
 		"ErrorsFromValidation",
 		"errorsFromValidation",
+		"ErrorMulti",
+		"ErrorsOfProcessing",
+		"processingErrs",
+		"ValidationErr",
 	} {
 		if isValidErrorArrayTypeName(tt) {
 			t.Errorf("%q must be invalid error array type name", tt)

@@ -77,7 +77,7 @@ var ErrInvalidURL = errors.New("invalid url") // or errInvalidURL
 
 More examples in [tests](https://github.com/Antonboom/errname/blob/master/pkg/analyzer/facts_test.go).
 
-## Assumptions (open to contributors 🙏🏻)
+## Assumptions
 
 <details>
   <summary>Click to expand</summary>
@@ -111,28 +111,6 @@ func NewDecodeError() error {
 }
 ```
 
-- Package aliases are not supported if the source package and its directory differ in name.
-
-- Nested error types are not supported
-
-```go
-type timeoutErr struct { // no warning from the linter :(
-    error
-}
-
-type DeadlineErr struct { //  no warning from the linter :(
-    timeoutErr
-}
-```
-
-- Not supported sentinel errors that were created by an external type or func (except `errors`/`fmt`) and that do not 
-  have an explicit type `error`:
-
-```go
-var ErrUnsupported = new(net.AddrError)
-var ErrSupported error = new(net.AddrError)
-```
-
 - Linter only checks the correctness of the suffix and prefix and their **uniqueness**. The logical meaning of the
   identifier remains on the developer's conscience:
 
@@ -145,7 +123,7 @@ var ErrExecQuery = errors.New("exec query error")
 var ErrGdfjnskjdfskf = errors.New("strange error") // on the developer's conscience
 ```
 
-- For error types over array/slice the `Errors` suffix is expected:
+- For error types over array/slice the `Errors` suffix is also allowed:
 
 ```go
 // Bad.

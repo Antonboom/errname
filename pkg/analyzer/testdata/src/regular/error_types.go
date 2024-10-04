@@ -25,3 +25,11 @@ type (
 )
 
 func (s *SomeTypeWithPtr) Error() string { return "SomeTypeWithPtr" }
+
+type timeoutErr struct { // want "the error type name `timeoutErr` should conform to the `xxxError` format"
+	error
+}
+
+type DeadlineErr struct { // want "the error type name `DeadlineErr` should conform to the `XxxError` format"
+	timeoutErr
+}

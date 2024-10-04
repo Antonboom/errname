@@ -18,14 +18,14 @@ type tenErrors [10]string
 
 func (te tenErrors) Error() string { return strings.Join(te[:], "\n") }
 
-type MultiError []error             // want "the type name `MultiError` should conform to the `XxxErrors` format"
+type MultiError []error             // want "the error type name `MultiError` should conform to the `XxxErrors` format"
 func (me MultiError) Error() string { return "" }
 
-type multiError []error             // want "the type name `multiError` should conform to the `xxxErrors` format"
+type multiError []error             // want "the error type name `multiError` should conform to the `xxxErrors` format"
 func (me multiError) Error() string { return "" }
 
-type TwoError [2]error            // want "the type name `TwoError` should conform to the `XxxErrors` format"
+type TwoError [2]error            // want "the error type name `TwoError` should conform to the `XxxErrors` format"
 func (te TwoError) Error() string { return te[0].Error() + "\n" + te[1].Error() }
 
-type twoError [2]error            // want "the type name `twoError` should conform to the `xxxErrors` format"
+type twoError [2]error            // want "the error type name `twoError` should conform to the `xxxErrors` format"
 func (te twoError) Error() string { return te[0].Error() + "\n" + te[1].Error() }

@@ -571,52 +571,6 @@ func Test_isValidErrorVarName_invalidVars(t *testing.T) {
 	}
 }
 
-func Test_isErrorType(t *testing.T) {
-	t.Run("custom error type", func(t *testing.T) {
-		b := isErrorType(
-			"AddrError",
-			stringSet{"AddrError": {}, "User": {}},
-			stringSet{"AddrError": {}},
-		)
-		if !b {
-			t.Fail()
-		}
-	})
-
-	t.Run("builtin error type", func(t *testing.T) {
-		b := isErrorType(
-			"error",
-			stringSet{"AddrError": {}, "User": {}},
-			stringSet{"AddrError": {}},
-		)
-		if !b {
-			t.Fail()
-		}
-	})
-
-	t.Run("collided error type (without Error method)", func(t *testing.T) {
-		b := isErrorType(
-			"error",
-			stringSet{"AddrError": {}, "User": {}, "error": {}},
-			stringSet{"AddrError": {}},
-		)
-		if b {
-			t.Fail()
-		}
-	})
-
-	t.Run("collided error type (with Error method)", func(t *testing.T) {
-		b := isErrorType(
-			"error",
-			stringSet{"AddrError": {}, "User": {}, "error": {}},
-			stringSet{"AddrError": {}, "error": {}},
-		)
-		if !b {
-			t.Fail()
-		}
-	})
-}
-
 func Test_isInitialism(t *testing.T) {
 	for _, tt := range []struct {
 		in       string

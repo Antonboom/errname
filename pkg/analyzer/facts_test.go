@@ -175,6 +175,8 @@ func Test_isValidErrorTypeName_invalidTypes(t *testing.T) {
 		"errZIP",
 		"nestedErr",
 		"withStackErr",
+		"withStackERR",
+		"withStackERROR",
 	} {
 		if isValidErrorTypeName(tt) {
 			t.Errorf("%q must be invalid error type name", tt)
@@ -545,6 +547,8 @@ func Test_isValidErrorVarName_validVars(t *testing.T) {
 func Test_isValidErrorVarName_invalidVars(t *testing.T) {
 	for _, tt := range []string{
 		"Canceled",
+		"ERRORExec",
+		"ERRExec",
 		"ErrExecErr",
 		"ErrorExec",
 		"IncorrectPasswordError",
@@ -569,6 +573,8 @@ func Test_isValidErrorVarName_invalidVars(t *testing.T) {
 		"testError",
 		"timeoutProtoErr",
 		"viewCloseError",
+		"viewERR",
+		"viewERROR",
 		"viewError",
 	} {
 		if isValidErrorVarName(tt) {

@@ -26,6 +26,7 @@ linters:
     - errchkjson
     - errname
     - exhaustive
+    - exptostd
     - forbidigo
     - gci
     - gocheckcompilerdirectives
@@ -54,6 +55,7 @@ linters:
     - mnd
     - nakedret
     - nilerr
+    - nilnesserr
     - nilnil
     - nestif
     - noctx
@@ -67,7 +69,6 @@ linters:
     - staticcheck
     - stylecheck
     - tagliatelle
-    - tenv
     - testableexamples
     - thelper
     - tparallel
@@ -78,3 +79,4 @@ linters:
     - usestdlibvars
     - wastedassign
     - whitespace
+    - usetesting
